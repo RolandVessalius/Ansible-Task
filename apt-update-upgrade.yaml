@@ -1,17 +1,11 @@
-- hosts: all
+- name: Update and upgrade apt packages on Ubuntu
+  hosts: all
+  become: yes
   tasks:
-  - name: Update APT Cache
-    apt:
-      update_cache: yes
-      force_apt_get: yes
+    - name: Update apt cache
+      apt:
+        update_cache: yes
 
-  - name: Remove apt lock file
-    file:
-      state: absent
-      path: "/var/lib/apt/lists/lock"
-
-  - name: Upgrade all packages to the latest version
-    apt:
-      name: "*"
-      state: latest
-      force_apt_get: yes
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
