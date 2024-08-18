@@ -8,7 +8,7 @@
   - name: Remove apt lock file
     file:
       state: absent
-      path: "/var/lib/dpkg/lock"
+      path: "/var/lib/apt/lists/lock"
 
   - name: Upgrade all packages to the latest version
     apt:
