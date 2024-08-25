@@ -1,8 +1,5 @@
-- name: Update and upgrade apt packages on Ubuntu
-  hosts: all
+- name: Upgrade all packages to the latest version
+  apt:
+    upgrade: dist
+    update_cache: yes
   become: yes
-  tasks:
-
-    - name: Upgrade all packages
-      apt:
-        upgrade: dist
